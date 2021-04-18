@@ -73,3 +73,77 @@ if (isset($_POST['login'])) {
         header("Location: login.php?login=no");
     }
 }
+
+// ? update && insert
+
+// skill insert
+if (isset($_POST['insert_skills'])) {
+    $title = $_POST['title'];
+    $content = $_POST['content'];
+    $first_skill = $_POST['first_skill'];
+    $second_skill = $_POST['second_skill'];
+    $third_skill = $_POST['third_skill'];
+    $forth_skill = $_POST['forth_skill'];
+    $first_counter = $_POST['first_counter'];
+    $second_counter = $_POST['second_counter'];
+    $third_counter = $_POST['third_counter'];
+    $forth_counter = $_POST['forth_counter'];
+    $cv = $_POST['cv'];
+
+    $insert_skill = $db->prepare("INSERT INTO skills SET
+        title='$title',
+        content='$content',
+        first_skill='$first_skill',
+        second_skill='$second_skill',
+        third_skill='$third_skill',
+        forth_skill='$forth_skill',
+        first_counter='$first_counter',
+        second_counter='$second_counter',
+        third_counter='$third_counter',
+        forth_counter='$forth_counter',
+        cv='$cv'
+    ");
+    $insert = $insert_skill->execute();
+
+    if ($insert) {
+        header("Location: skill.php?insert=ok");
+    } else {
+        header("Location: skill.php?insert=no");
+    }
+}
+
+// skill update
+if (isset($_POST['update_skills'])) {
+    $title = $_POST['title'];
+    $content = $_POST['content'];
+    $first_skill = $_POST['first_skill'];
+    $second_skill = $_POST['second_skill'];
+    $third_skill = $_POST['third_skill'];
+    $forth_skill = $_POST['forth_skill'];
+    $first_counter = $_POST['first_counter'];
+    $second_counter = $_POST['second_counter'];
+    $third_counter = $_POST['third_counter'];
+    $forth_counter = $_POST['forth_counter'];
+    $cv = $_POST['cv'];
+
+    $update_skill = $db->prepare("UPDATE skills SET
+        title='$title',
+        content='$content',
+        first_skill='$first_skill',
+        second_skill='$second_skill',
+        third_skill='$third_skill',
+        forth_skill='$forth_skill',
+        first_counter='$first_counter',
+        second_counter='$second_counter',
+        third_counter='$third_counter',
+        forth_counter='$forth_counter',
+        cv='$cv' WHERE skill_id=1
+    ");
+    $update = $update_skill->execute();
+
+    if ($update) {
+        header("Location: skill.php?update=ok");
+    } else {
+        header("Location: skill.php?update=no");
+    }
+}

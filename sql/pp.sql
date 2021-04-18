@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 08 Nis 2021, 16:45:57
+-- Üretim Zamanı: 18 Nis 2021, 21:49:19
 -- Sunucu sürümü: 10.4.17-MariaDB
 -- PHP Sürümü: 8.0.2
 
@@ -126,6 +126,7 @@ CREATE TABLE `site_settings` (
 CREATE TABLE `skills` (
   `skill_id` int(11) NOT NULL,
   `title` varchar(50) NOT NULL,
+  `content` varchar(250) NOT NULL,
   `first_skill` varchar(50) NOT NULL,
   `second_skill` varchar(50) NOT NULL,
   `third_skill` varchar(50) NOT NULL,
@@ -136,6 +137,13 @@ CREATE TABLE `skills` (
   `forth_counter` varchar(10) NOT NULL,
   `cv` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Tablo döküm verisi `skills`
+--
+
+INSERT INTO `skills` (`skill_id`, `title`, `content`, `first_skill`, `second_skill`, `third_skill`, `forth_skill`, `first_counter`, `second_counter`, `third_counter`, `forth_counter`, `cv`) VALUES
+(1, 'Yeteneklerim', 'açıklama içeriği', 'HTML', 'CSS', 'JAVA', 'PYTHON', '80', '70', '90', '60', 'pp.sql');
 
 -- --------------------------------------------------------
 
@@ -265,7 +273,7 @@ ALTER TABLE `site_settings`
 -- Tablo için AUTO_INCREMENT değeri `skills`
 --
 ALTER TABLE `skills`
-  MODIFY `skill_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `skill_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `user`

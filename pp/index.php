@@ -1,6 +1,12 @@
 ﻿<?php
 include './nedmin/connect.php';
 
+// fetch skills
+$fetch_skill = $db->prepare('SELECT * FROM skills WHERE skill_id=1');
+$fetch_skill->execute();
+
+$fetch_s = $fetch_skill->fetch(PDO::FETCH_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
@@ -121,41 +127,41 @@ include './nedmin/connect.php';
       </div>
     </div>
   </section>
+
   <!-- ABOUT SECTION END-->
   <section id="skill-sec">
     <div class="overlay">
       <div class="container">
         <div class="row pad-top-bottom move-me">
           <div class="col-lg-2 col-md-2 col-sm-2 text-center wow bounceIn animated" data-wow-duration="1s" data-wow-delay=".2s">
-            <span class="chart" data-percent="75">
+            <span class="chart" data-percent="<?php echo $fetch_s['first_counter']; ?>">
               <span class="percent"></span>
             </span>
-            <h4>JQUERY</h4>
+            <h4><?php echo $fetch_s['first_skill']; ?></h4>
           </div>
           <div class="col-lg-2 col-md-2 col-sm-2 text-center wow bounceIn animated" data-wow-duration="1s" data-wow-delay=".4s">
-            <span class="chart" data-percent="80">
+            <span class="chart" data-percent="<?php echo $fetch_s['second_counter']; ?>">
               <span class="percent"></span>
             </span>
-            <h4>HTML</h4>
+            <h4><?php echo $fetch_s['second_skill']; ?></h4>
           </div>
           <div class="col-lg-2 col-md-2 col-sm-2 text-center wow bounceIn animated" data-wow-duration="1s" data-wow-delay=".6s">
-            <span class="chart" data-percent="95">
+            <span class="chart" data-percent="<?php echo $fetch_s['third_counter']; ?>">
               <span class="percent"></span>
             </span>
-            <h4>PHP</h4>
+            <h4><?php echo $fetch_s['third_skill']; ?></h4>
           </div>
 
           <div class="col-lg-2 col-md-2 col-sm-2 text-center wow bounceIn animated" data-wow-duration="1s" data-wow-delay=".8s">
-            <span class="chart" data-percent="65">
+            <span class="chart" data-percent="<?php echo $fetch_s['forth_counter']; ?>">
               <span class="percent"></span>
             </span>
-            <h4>JAVA</h4>
+            <h4><?php echo $fetch_s['forth_skill']; ?></h4>
           </div>
           <div class="col-lg-4 col-md-4 col-sm-4 wow bounceIn animated" data-wow-duration="1s" data-wow-delay="1s">
-            <h1>YETENEKLERİM</h1>
+            <h1><?php echo $fetch_s['title']; ?></h1>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-              pretium lectus vel justo iaculis blandit.
+              <?php echo $fetch_s['content']; ?>
             </p>
             <a href="#resume-sec" class="btn btn-style-two btn-lg">CV İNDİR</a>
           </div>
